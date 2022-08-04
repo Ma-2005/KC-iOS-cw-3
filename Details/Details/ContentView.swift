@@ -61,19 +61,16 @@ struct ContentView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 25, weight: .semibold, design: .serif))
                         
-                }
+                    }
                     
                     HStack{
                         
                         TextField("    First name", text: $first_name )
-                            .font(.system(size: 24, weight: .semibold, design: .serif))
+                            .font(.custom("CF", size: 24))
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
-                        
                         
                         TextField("    Last name", text: $last_name )
                             .font(.system(size: 24, weight: .semibold, design: .serif))
-                        
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                     }
@@ -89,9 +86,8 @@ struct ContentView: View {
                     .font(.system(size: 24, weight: .semibold, design: .serif))                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
-              SecureTextField(text: Password)
+                SecureTextField(text: Password)
                     .font(.system(size: 24, weight: .semibold, design: .serif))                    .textFieldStyle(RoundedBorderTextFieldStyle())
-
                     .padding()
                 
                 
