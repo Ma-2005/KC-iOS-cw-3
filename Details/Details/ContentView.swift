@@ -7,6 +7,28 @@
 
 import SwiftUI
 
+struct SecureTextField: View {
+    
+    @State private var isSecureField: Bool = true
+    @State  var text: String
+    
+    var body: some View {
+        HStack{
+            if isSecureField {
+                SecureField("    Password", text: $text )
+            } else {
+                TextField(text, text: $text )
+            }
+        }.overlay(alignment: .trailing) {
+            Image(systemName: isSecureField ? "eye.slash" : "eye")
+                .padding()
+                .onTapGesture {
+                isSecureField.toggle()
+            }
+        }
+    }
+}
+
 struct ContentView: View {
     
     @State var first_name = ""
@@ -67,8 +89,9 @@ struct ContentView: View {
                     .font(.system(size: 24, weight: .semibold, design: .serif))                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
-              SecureField("    Password", text: $Password )
+              SecureTextField(text: Password)
                     .font(.system(size: 24, weight: .semibold, design: .serif))                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
                     .padding()
                 
                 
@@ -84,5 +107,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewInterfaceOrientation(.portrait)
     }
 }
